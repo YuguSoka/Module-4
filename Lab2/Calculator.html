@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="Calculator.css">
+</head>
+<body>
+    <div class="calculator">
+        <input id="num1" type="number" placeholder="Number 1">
+        <input id="num2" type="number" placeholder="Number 2">
+        <div class="operators">
+            <button class="operator" onclick="setOperator('+')">+</button>
+            <button class="operator" onclick="setOperator('-')">-</button>
+            <button class="operator" onclick="setOperator('*')">x</button>
+            <button class="operator" onclick="setOperator('/')">/</button>
+        </div>
+        <button class="equals" onclick="calculate()">=</button>
+        <button class="reset" onclick="reset()">C</button>
+        <div class="result" id="result">Result: </div>
+    </div>
+
+    <script src="Calculator.js"></script>
+</body>
+</html>
