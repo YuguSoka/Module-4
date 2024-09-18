@@ -1,0 +1,14 @@
+.news-item {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    background-color: #f8f9fa;
+  }
+  .news-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  .news-content {
+    font-size: 1rem;
+  }
