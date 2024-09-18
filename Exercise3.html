@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: #e3f2fd;
+        margin: 0;
+        padding: 0;
+      }
+      .artist-card {
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+        margin: 20px;
+        width: 300px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .artist-name {
+        font-weight: 600;
+        font-size: 2em;
+        margin-bottom: 10px;
+      }
+      .portfolio-item {
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+      }
+      .portfolio-item img {
+        width: 100%;
+        border-radius: 5px;
+      }
+      .portfolio-title {
+        font-weight: 600;
+        font-size: 1.2em;
+      }
+    </style>
+  </head>
+  <body>
+    <template id="artist-template">
+      <div class="artist-card">
+        <div class="artist-name"></div>
+        <div class="portfolio-list"></div>
+      </div>
+    </template>
+
+    <template id="portfolio-item-template">
+      <div class="portfolio-item">
+        <div class="portfolio-title"></div>
+        <img src="" alt="Portfolio Image" />
+      </div>
+    </template>
+
+    <div id="artist-list"></div>
+
+    <script>
+      function addArtistProfile(name, portfolio) {
+        const artistTemplate = document
+          .getElementById("artist-template")
+          .content.cloneNode(true);
+
+        artistTemplate.querySelector(".artist-name").innerText = name;
+
+        const portfolioList = artistTemplate.querySelector(".portfolio-list");
+
+        portfolio.forEach((item) => {
+          const portfolioItemTemplate = document
+            .getElementById("portfolio-item-template")
+            .content.cloneNode(true);
+
+          portfolioItemTemplate.querySelector(".portfolio-title").innerText =
+            item.title;
+          portfolioItemTemplate.querySelector("img").src = item.url;
+
+          portfolioList.appendChild(portfolioItemTemplate);
+        });
+
+        document.querySelector("#artist-list").appendChild(artistTemplate);
+      }
+
+      const artists = [
+        {
+          name: "Van Gogh",
+          portfolio: [
+            {
+              title: "Portrait",
+              url: "https://collectionapi.metmuseum.org/api/collection/v1/iiif/436532/1671316/main-image",
+            },
+            {
+              title: "Sky",
+              url: "https://mymodernmet.com/wp/wp-content/uploads/2020/11/White-house-night-van-goh-worldwide-2.jpg",
+            },
+          ],
+        },
+        {
+          name: "Monet",
+          portfolio: [
+            {
+              title: "Water Lilies",
+              url: "https://upload.wikimedia.org/wikipedia/commons/4/46/Monet%2C_Claude_-_Water_Lilies_-_1916.jpg",
+            },
+            {
+              title: "Impression, Sunrise",
+              url: "https://upload.wikimedia.org/wikipedia/commons/7/7f/Claude_Monet%2C_Impression%2C_Sunrise.jpg",
+            },
+          ],
+        },
+      ];
+
+      artists.forEach((artist) => {
+        addArtistProfile(artist.name, artist.portfolio);
+      });
+    </script>
+  </body>
+</html>
