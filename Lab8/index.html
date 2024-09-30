@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moment DateTime Format</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Reference Moment.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        #displayMoment, #displayJsDate {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>Moment Date</h2>
+    <div id="displayMoment"></div>
+    <h2>JavaScript Date</h2>
+    <div id="displayJsDate"></div>
+
+    <script type="text/javascript">
+        (function() {
+            // Replace with your actual birthdate
+            const yourBirthDate = '2000-05-07'; // Format: YYYY-MM-DD
+
+            // Instantiate a moment object for the current date and time
+            let nowMoment = moment();
+            let birthDateMoment = moment(yourBirthDate);
+
+            // Calculate the number of days between birthdate and current date
+            let daysDifference = nowMoment.diff(birthDateMoment, 'days');
+
+            // Display the number of years, months, and days
+            let duration = moment.duration(nowMoment.diff(birthDateMoment));
+            let years = Math.floor(duration.asYears());
+            let months = duration.month();
+            let days = duration.days();
+
+            // Given two dates
+            let date1 = moment('2023-09-01'); // Example date 1
+            let date2 = moment('2024-01-01'); // Example date 2
+
+            // Display the closest date to the current date
+            let closestDate = (nowMoment.diff(date1) < nowMoment.diff(date2)) ? date1 : date2;
+
+            // Display whether the first date is before or after the second date
+            let comparisonResult = date1.isBefore(date2) ? 'Date 1 is before Date 2' : 'Date 1 is after Date 2';
+
+            // Display the current time in London
+            let londonTime = nowMoment.tz('Europe/London').format('LLLL');
+
+            // Display outputs
+            let eDisplayMoment = document.getElementById('displayMoment');
+            eDisplayMoment.innerHTML = `
+                <p>Current date and time (Moment.js): ${nowMoment.format('LLLL')}</p>
+                <p>Days between birthdate and today: ${daysDifference}</p>
+                <p>${years} years, ${months} months, and ${days} days</p>
+                <p>Closest date to today: ${closestDate.format('YYYY-MM-DD')}</p>
+                <p>${comparisonResult}</p>
+                <p>Current time in London: ${londonTime}</p>
+            `;
+
+            // Display value of JavaScript Date object in #displayJsDate div
+            let nowDate = new Date();
+            let eDisplayDate = document.getElementById('displayJsDate');
+            eDisplayDate.innerHTML = `<p>Current date and time (JavaScript Date): ${nowDate.toString()}</p>`;
+        })();
+    </script>
+</body>
+</html>

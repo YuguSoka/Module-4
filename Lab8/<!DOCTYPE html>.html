@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moment DateTime Format</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Reference Moment.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+</head>
+<body>
+    <h2>Moment Date</h2>
+    <div id="displayMoment"></div>
+    <h2>JavaScript Date</h2>
+    <div id="displayJsDate"></div>
+
+    <script type="text/javascript">
+        (function() {
+            // Instantiate a moment object for the current date and time
+            let nowMoment = moment();
+
+            // Instantiate a JavaScript Date object for the current date and time
+            let nowDate = new Date();
+
+            // Display value of moment object in #displayMoment div
+            let eDisplayMoment = document.getElementById('displayMoment');
+            eDisplayMoment.innerHTML = `<p>Current date and time (Moment.js): ${nowMoment.format('LLLL')}</p>`;
+
+            // Display value of Date object in #displayJsDate div
+            let eDisplayDate = document.getElementById('displayJsDate');
+            eDisplayDate.innerHTML = `<p>Current date and time (JavaScript Date): ${nowDate.toString()}</p>`;
+        })();
+    </script>
+</body>
+</html>
