@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.slider {
+    width: 100px;
+    height: 100px;
+    background-color: #3498db;
+    position: relative;
+    animation: slide 4s infinite;
+}
+
+@keyframes slide {
+    0%, 100% {
+        top: 0;
+        background-color: #3498db; /* Initial color */
+    }
+    50% {
+        top: calc(100vh - 100px); /* Move to bottom */
+        background-color: #e74c3c; /* Change color */
+    }
+}
